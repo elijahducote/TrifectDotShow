@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <title>Check Back Later</title>
+    <meta name=viewport content="width=device-width,initial-scale=1.0" />
+    <style>
+      :root {
+        font-size: 1px !important;
+      }
+      body, html {
+        font-size: 25rem;
+        color:#FFF;
+        background:linear-gradient(to bottom left,hsl(284.9, 68.95%, 57.06%) 0%,hsl(284.9, 66.82%, 56.29%) 8.5%,hsl(284.9, 63.78%, 55.14%) 15.6%,hsl(284.9, 60.02%, 53.63%) 21.7%,hsl(284.9, 55.74%, 51.79%) 27%,hsl(284.9, 51.89%, 49.62%) 31.7%,hsl(284.9, 51.89%, 47.14%) 36.1%,hsl(284.9, 51.89%, 44.35%) 40.3%,hsl(284.9, 51.89%, 41.25%) 44.7%,hsl(284.9, 51.89%, 37.84%) 49.5%,hsl(284.9, 51.89%, 34.09%) 55%,hsl(284.9, 51.89%, 29.97%) 61.3%,hsl(284.9, 51.89%, 25.39%) 68.7%,hsl(284.9, 51.89%, 20.18%) 77.4%,hsl(284.9, 51.89%, 13.8%) 87.8%,hsl(0, 0%, 0%) 100%);
+        width: 100vw;
+        height: 100vh;
+        overflow:hidden !important;
+        scroll-behavior: smooth;
+        font-family: Helvetica, Arial, sans-serif;
+      }
+      div.container {
+        padding: 0;
+        min-width: auto;
+        margin: 0 0 0 -50%;
+        width: 100vw;
+        max-height: 100vh;
+        max-width: 100vw;
+        display: block;
+        position: absolute;
+        inset: 0 0 0 50%;
+        box-sizing: content-box;
+        overflow-x:hidden !important;
+      }
+      /* Extra Small */
+      @media screen and (max-height:869.9033203125px) and (min-width:404.953125px) {
+        div.container {
+          font-size:25rem !important;
+        }
+      }
+      
+      /* Small */
+      @media screen and (max-height:942px) and (min-width:555.1875px) {
+        div.container {
+          font-size:37.5rem !important;
+        }
+      }
+      
+      /* Medium */
+      @media screen and (max-height:1152px) and (min-width:772px) {
+        div.container {
+          font-size:43.75rem !important;
+        }
+      }
+      
+      /* Large */
+      @media screen and (min-height:805.25px) and (min-width:992px) {
+        div.container {
+          font-size:43.75rem !important;
+        }
+      }
+      
+      /* Extra Large */
+      @media screen and (max-width:1390.5px) and (min-height:825.625px) {
+        div.container {
+          font-size:50rem !important;
+        }
+      }
+      
+      /* Extra Extra Large */
+      @media screen and (min-width:1930px) and (min-height:1113.75px) {
+        div.container {
+          font-size:62.5rem !important;
+        }
+      }
+      
+      div.wrapper {
+        line-height: 1.5em;
+        letter-spacing: 0.075em;
+        right: 100%;
+        top: 0;
+        margin: 0 0 0 0;
+        color: #fff;
+        left: 0;
+        width: 100%;
+        height: 100vh; /* full height */
+        padding: 0;
+        position: absolute;
+        box-sizing: border-box;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-content: center;
+        object-position: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      
+      .main-content {
+        animation: heartbeat 1228ms cubic-bezier(0.365, 0, 0.185, 1) infinite, heartbeat-variation 4s ease-in-out infinite;
+      }
+      
+      @keyframes heartbeat {
+        0% {
+          filter: brightness(1) saturate(1);
+        }
+        10% {
+          filter: brightness(0.95) saturate(0.9);
+        }
+        20% {
+          filter: brightness(0.9) saturate(0.95);
+        }
+        25% {
+          filter: brightness(1.1) saturate(1.2);
+        }
+        30% {
+          filter: brightness(1.15) saturate(1.15);
+        }
+        35% {
+          filter: brightness(1.1) saturate(1.1);
+        }
+        40% {
+          filter: brightness(1.05) saturate(1.05);
+        }
+        45% {
+          filter: brightness(0.95) saturate(0.95);
+        }
+        65% {
+          filter: brightness(0.98) saturate(0.98);
+        }
+        85% {
+          filter: brightness(1) saturate(1);
+        }
+        100% {
+          filter: brightness(1) saturate(1);
+        }
+      }
+
+
+      @keyframes heartbeat-variation {
+        0%, 100% {
+          animation-duration: 880ms;
+        }
+        25% {
+          animation-duration: 1228ms;
+        }
+        75% {
+          animation-duration: 1900ms;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class=container style=margin-bottom:0;>
+      <div class="wrapper main-content">
+        <img src=./branding.png style="width:10em;display:block" />
+        <img src=./circle.gif style="width:10em;display:block" />
+        <span>Check back later.</span>
+      </div>
+    </div>
+  </body>
+</html>
