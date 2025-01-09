@@ -13,7 +13,7 @@
   
 [[redirects]]
   from = "https://shop.trifect.show/*"
-  to = "/shop/index.htm/:splat"
+  to = "/shop/index.htm"
   status = 200
   force = true
 
