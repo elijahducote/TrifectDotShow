@@ -2,7 +2,7 @@
 import axios from "axios";
 
 // Utility
-import {tabulate, sendHTMLResponse} "../utility.js";
+import {tabulate, sendHTMLResponse} from "../utility.js";
 
 // API
 const gh = axios.create({
