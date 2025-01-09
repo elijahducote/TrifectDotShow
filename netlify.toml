@@ -1,0 +1,24 @@
+[build]
+  publish = "convoy/"
+  # command = ""
+
+[functions]
+  directory = "envoy/"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/cdn/*"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "https://shop.trifect.show/*"
+  to = "/convoy/shop/:splat"
+  status = 200
+  force = true
+  
+[[redirects]]
+  from = "https://api.trifect.show/*"
+  to = "/envoy/:splat"
+  status = 200
+  force = true
