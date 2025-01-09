@@ -13,25 +13,23 @@
 
 [[redirects]]
   from = "https://shop.trifect.show/*"
-  to = "https://trifect.myspreadshop.com/:splat"
+  to = "/shop/:splat"
   status = 200
   force = true
-  [[headers]]
+
+[[headers]]
   for = "https://shop.trifect.show/*"
   [headers.values]
     X-Frame-Options = "ALLOWALL"
-    X-XSS-Protection = "1; mode=block"
-    Referrer-Policy = "no-referrer-when-downgrade"
-    X-Content-Type-Options = "nosniff"
     Content-Security-Policy = """
       default-src 'self' https://trifect.myspreadshop.com;
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://trifect.myspreadshop.com https://*.spreadshirt.com;
+      frame-src https://trifect.myspreadshop.com https://*.spreadshirt.com;
+      script-src 'self' 'unsafe-inline' https://trifect.myspreadshop.com https://*.spreadshirt.com;
       style-src 'self' 'unsafe-inline' https://trifect.myspreadshop.com https://*.spreadshirt.com;
       img-src 'self' data: https://*.spreadshirt.com;
-      frame-src https://trifect.myspreadshop.com https://*.spreadshirt.com;
       connect-src 'self' https://trifect.myspreadshop.com https://*.spreadshirt.com;
     """
-  
+
 [[redirects]]
   from = "https://api.trifect.show/*"
   to = "/envoy/:splat"
