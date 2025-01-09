@@ -10,10 +10,10 @@
   from = "/cdn/*"
   to = "/:splat"
   status = 200
-
+  
 [[redirects]]
   from = "https://shop.trifect.show/*"
-  to = "/shop/:splat"
+  to = "/shop/index.html"
   status = 200
   force = true
 
