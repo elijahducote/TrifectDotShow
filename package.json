@@ -1,0 +1,32 @@
+{
+  "name": "trifectdotshow",
+  "version": "1.0.0",
+  "description": "Official Trifect Website.",
+  "keywords": [
+    "trifect show",
+    "youtube series",
+    "website",
+    "source code",
+    "open source"
+  ],
+  "homepage": "https://github.com/elijahducote/TrifectDotShow#readme",
+  "bugs": {
+    "url": "https://github.com/elijahducote/TrifectDotShow/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elijahducote/TrifectDotShow.git"
+  },
+  "license": "ISC",
+  "author": "Elijah Ducote",
+  "type": "module",
+  "main": "./convoy/index.htm",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "vanjs-core": "^1.5.3",
+    "vanjs-ext": "^0.6.2"
+  }
+}
