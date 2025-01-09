@@ -36,7 +36,17 @@
   </style>
   <div id=myShop></div>
   <script>
-    var spread_shop_config = {shopName: "trifect", locale: "us_US", prefix: "https://trifect.myspreadshop.com", baseId: "myShop", swipeMenu: true, usePushState: true, pushStateBaseUrl: "https://shop.trifect.show/", updateMetadata: false}
+    var spread_shop_config = {
+      shopName: "trifect",
+      locale: "us_US",
+      prefix: "https://trifect.myspreadshop.com",
+      baseId: "myShop",
+      swipeMenu: true,
+      // usePushState: true,
+      // pushStateBaseUrl: "https://shop.trifect.show/"
+      updateMetadata: false,
+      integrationProvider: "custom"
+    }
   </script>
 
   <script type=text/javascript src=https://trifect.myspreadshop.com/shopfiles/shopclient/shopclient.nocache.js></script>
