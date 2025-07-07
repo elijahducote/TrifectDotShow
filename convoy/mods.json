@@ -1,0 +1,18 @@
+{
+ "mods": [
+   "sodium",
+   "voicechat",
+   "sodium-extra",
+   "signed_paintings",
+   "moreculling",
+   "lithium",
+   "lambdynamiclights",
+   "krypton",
+   "ImmediatelyFast",
+   "ferritecore",
+   "fabric-api",
+   "entityculling",
+   "cloth-config",
+   "c2me"
+ ]
+}
