@@ -18,7 +18,7 @@ export default function Talk(tags) {
     htm(tags, undefined, "hr"),
     htm(tags, undefined, "div", {class: "divider"}),
     htm(tags, undefined,"textarea",{placeholder:"Bla bla bla. I yap, something, something... Trifect Show...",class:"form-input",maxlength:"960",minlength:"0",name:"message",required:true}),
-    htm(tags, undefined, "div", {class:"h-captcha","data-sitekey":"884a606e-fd98-4c56-a6ca-f7004ddcbe5a","data-theme":"dark","data-size":"compact"}),
+    htm(tags, undefined, "div", {class:"h-captcha","data-sitekey":"5074aea0-f106-411a-9564-b178a09875e0","data-theme":"dark","data-size":"compact"}),
     htm(tags,"SUBMIT","button",{class:"pure-button pure-button-primary"}),
   ], "form", {action:"/go/contact-trifect",method:"POST",type:"multipart/form-data",class: "pure-form pure-form-stacked pure-form-aligned"}),"div",{class:"full-width-form"});
 }
