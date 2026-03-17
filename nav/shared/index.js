@@ -6,6 +6,8 @@ let leavingPage = false;
 
 function initAnimations() {
   const siteHeader = document.querySelector("div.wrapper.topnav");
+  const existing = siteHeader.querySelector("svg.spinner, svg.fadeAway");
+  if (existing) existing.remove();
   siteHeader.style.opacity = "0.5";
 
   const loading = Loader({ class: "icon spinner" });
@@ -367,4 +369,21 @@ window.addEventListener("DOMContentLoaded", function() {
   initScrollHandler();
   initSmoothScroll();
   initFullscreenHandler();
+});
+
+window.addEventListener("pageshow", function(event) {
+  if (!event.persisted) return;
+  leavingPage = false;
+  const siteHeader = document.querySelector("div.wrapper.topnav");
+  if (siteHeader) {
+    siteHeader.querySelectorAll("svg.spinner, svg.fadeAway").forEach(function(el) { el.remove(); });
+    siteHeader.style.opacity = "1.0";
+  }
+  navHidden = false;
+  lastScrollTop = 0;
+  if (topNav) {
+    topNav.style.transform = "translateY(0)";
+    topNav.style.transition = "none";
+  }
+  initAnimations();
 });
