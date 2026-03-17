@@ -385,5 +385,4 @@ window.addEventListener("pageshow", function(event) {
     topNav.style.transform = "translateY(0)";
     topNav.style.transition = "none";
   }
-  initAnimations();
 });
