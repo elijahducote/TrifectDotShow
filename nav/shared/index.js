@@ -31,11 +31,11 @@ function initAnimations() {
 
 function initNavHoverEffects() {
   if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
-  const currentPath = window.location.pathname.substring(1) || "home",
+  const currentPath = window.location.pathname.substring(1) || "watch",
         navIcons = document.querySelectorAll("div.wrapper.topnav div svg"),
         navText = document.querySelectorAll("div.wrapper.topnav div h2"),
         nth = navIcons.length;
-  
+
   // Apply styles based on state: active (current page), hovered, or inactive
   function applyNavItemStyles(index, isActive, isHovered) {
     const icon = navIcons[index],
@@ -121,7 +121,7 @@ function simulateLinkClick(url, target = "_self") {
 
 
 function updateNavIcons() {
-  const currentPath = window.location.pathname.substring(1) || "home",
+  const currentPath = window.location.pathname.substring(1) || "watch",
   navIcons = document.querySelectorAll("div.wrapper.topnav div svg"),
   navText = document.querySelectorAll("div.wrapper.topnav div h2"),
   nth = navIcons.length,
