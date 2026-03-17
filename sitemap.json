@@ -12,6 +12,7 @@
     [
       ["viewport", "width=device-width,initial-scale=1.0"],
       ["keywords", ""],
+      ["description", "Watch episodes of The Trifect Show."],
       "https://cdn.jsdelivr.net/npm/hls.js@latest",
       "https://cdn.jsdelivr.net/npm/dashjs@latest/dist/dash.all.min.js",
       "/src/shared/index.js",
@@ -35,11 +36,12 @@
     ]
   },
   "talk": {
-    "title": "Talk - Trifecr Us",
+    "title": "Talk - Trifect Us",
     "metadata":
     [
       ["viewport", "width=device-width,initial-scale=1.0"],
       ["keywords", ""],
+      ["description", "Keep in touch with The Trifect Show."],
       "/src/shared/pure.css",
       "https://js.hcaptcha.com/1/api.js?hl=en&recaptchacompat=on",
       "/src/shared/index.js",
