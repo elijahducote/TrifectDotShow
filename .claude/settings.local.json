@@ -30,7 +30,8 @@
       "Bash(node _test_bio.mjs 2>&1)",
       "Bash(timeout 10 node -e \"\nconst {JSDOM} = require\\('jsdom'\\);\nconst DOM = new JSDOM\\('<!DOCTYPE html>'\\);\nconst van = require\\('mini-van-plate'\\);\nconst {tags} = van.vanWithDoc\\(DOM.window.document\\);\n\n// Test basic tag creation\nconsole.log\\('div:', typeof tags.div\\);\nconsole.log\\('svg:', typeof tags.svg\\);\nconsole.log\\('path:', typeof tags.path\\);\nconsole.log\\('clipPath:', typeof tags.clipPath\\);\nconsole.log\\('defs:', typeof tags.defs\\);\n\n// Test creating clipPath element\ntry {\n  var p = tags.path\\({d: 'M 0 0 L 1 1'}\\);\n  console.log\\('path el:', p.outerHTML\\);\n  var cp = tags.clipPath\\({id: 'test', clipPathUnits: 'objectBoundingBox'}, p\\);\n  console.log\\('clipPath el:', cp.outerHTML\\);\n  var d = tags.defs\\(cp\\);\n  console.log\\('defs el:', d.outerHTML\\);\n  var s = tags.svg\\({xmlns: 'http://www.w3.org/2000/svg', width: '0', height: '0'}, d\\);\n  console.log\\('svg el:', s.outerHTML\\);\n} catch\\(e\\) {\n  console.error\\('ERROR:', e.message\\);\n}\n\" 2>&1)",
       "Bash(timeout 5 node _test_bio_mock.mjs 2>&1)",
-      "Bash(xxd /mnt/ext-sdcard/TrifectShow/_quote_test.json)"
+      "Bash(xxd /mnt/ext-sdcard/TrifectShow/_quote_test.json)",
+      "Bash(wc -l /mnt/ext-sdcard/TrifectShow/dploy/shared/video/*.js)"
     ]
   }
 }

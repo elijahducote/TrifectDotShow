@@ -129,14 +129,17 @@ function updateNavIcons() {
   let itR8 = nth, ndx, icon, text, dataLink, normalizedLink;
   root.addEventListener("click", function(e) {
     const node = e.target;
-    if (node.tagName === "DIV") simulateLinkClick(node.dataset.link);
-    if (node.tagName === "path") {
+    let link;
+    if (node.tagName === "DIV") {
+      link = node.dataset.link;
+    } else if (node.tagName === "path") {
       let parent = node.parentElement;
       if (parent.tagName === "g") parent = parent.parentElement;
-      simulateLinkClick(parent.parentElement.dataset.link);
-      return;
+      link = parent.parentElement.dataset.link;
+    } else if (node.tagName === "H2" || node.tagName === "svg") {
+      link = node.parentElement.dataset.link;
     }
-    if (node.tagName === "H2" || node.tagName === "svg") simulateLinkClick(node.parentElement.dataset.link);
+    if (link) simulateLinkClick(link);
   });
   
   for (;itR8;--itR8) {
