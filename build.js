@@ -32,7 +32,7 @@ async function runBuild(pageName = null) {
   if (pageName) {
     // Only bundle files for the specific page
     cssFyl = await glob(`./nav/${pageName}/*.css`);
-    jsFyl = await glob(`./nav/${pageName}/index.js`);
+    jsFyl = ["./nav/shared/index.js", ...await glob(`./nav/${pageName}/index.js`)];
     jsVideoFyl = await glob("./nav/shared/video/*.js");
   } else {
     // Bundle all files

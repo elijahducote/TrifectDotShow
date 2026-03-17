@@ -371,8 +371,8 @@ window.addEventListener("DOMContentLoaded", function() {
   initFullscreenHandler();
 });
 
-window.addEventListener("pageshow", function(event) {
-  if (!event.persisted) return;
+window.addEventListener("pageshow", function() {
+  if (!leavingPage) return;
   leavingPage = false;
   const siteHeader = document.querySelector("div.wrapper.topnav");
   if (siteHeader) {
