@@ -366,10 +366,10 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
           }
         }
         
-        video.src = STREAM_CONFIG.mp4Fallback;
+        if (STREAM_CONFIG.mp4Fallback) video.src = STREAM_CONFIG.mp4Fallback;
         streamType = 'mp4';
       }
-      
+
       async function checkFileExists(url) {
         try {
           const response = await fetch(url, { method: 'HEAD' });
@@ -506,10 +506,10 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
           }
           streamPlayer = null;
         }
-        video.src = STREAM_CONFIG.mp4Fallback;
+        if (STREAM_CONFIG.mp4Fallback) video.src = STREAM_CONFIG.mp4Fallback;
         streamType = 'mp4';
       }
-      
+
       // ============================================
       // Quality Selection – NOW NON‑DESTRUCTIVE & SEAMLESS
       // ============================================
