@@ -371,18 +371,8 @@ window.addEventListener("DOMContentLoaded", function() {
   initFullscreenHandler();
 });
 
-window.addEventListener("pageshow", function() {
-  if (!leavingPage) return;
-  leavingPage = false;
-  const siteHeader = document.querySelector("div.wrapper.topnav");
-  if (siteHeader) {
-    siteHeader.querySelectorAll("svg.spinner, svg.fadeAway").forEach(function(el) { el.remove(); });
-    siteHeader.style.opacity = "1.0";
-  }
-  navHidden = false;
-  lastScrollTop = 0;
-  if (topNav) {
-    topNav.style.transform = "translateY(0)";
-    topNav.style.transition = "none";
+window.addEventListener("pageshow", function(event) {
+  if (event.persisted || leavingPage) {
+    location.reload();
   }
 });
