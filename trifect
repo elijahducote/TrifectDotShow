@@ -76,80 +76,8 @@ server {
     log_not_found off;
   }
 
-  location /assets {
-    root /var/www/trifect;
-    try_files $uri $uri/ =404;
-
-    # MIME types for streaming assets (single block — NGINX replaces, not merges)
-    types {
-      application/vnd.apple.mpegurl m3u8;
-      application/dash+xml          mpd;
-      video/mp2t                    ts;
-      video/iso.segment             m4s;
-      text/vtt                      vtt;
-      video/mp4                     mp4;
-      image/jpeg                    jpg jpeg;
-      image/png                     png;
-      image/webp                    webp;
-    }
-
-    # CORS headers for streaming (required for HLS.js and dash.js)
-    add_header Access-Control-Allow-Origin "*" always;
-    add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
-    add_header Access-Control-Allow-Headers "Range, Content-Type" always;
-    add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Accept-Ranges" always;
-    add_header Accept-Ranges bytes always;
-
-    # Handle preflight requests
-    if ($request_method = OPTIONS) {
-      add_header Access-Control-Allow-Origin "*";
-      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS";
-      add_header Access-Control-Allow-Headers "Range, Content-Type";
-      add_header Content-Length 0;
-      add_header Content-Type text/plain;
-      return 204;
-    }
-
-    # Cache: manifests (short TTL for live compatibility)
-    location ~* \.(?:m3u8|mpd)$ {
-      try_files $uri =404;
-      add_header Cache-Control "public, max-age=2" always;
-      add_header Access-Control-Allow-Origin "*" always;
-      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
-      add_header Access-Control-Allow-Headers "Range, Content-Type" always;
-      add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Accept-Ranges" always;
-      add_header Accept-Ranges bytes always;
-    }
-
-    # Cache: segments (immutable)
-    location ~* \.(?:ts|m4s)$ {
-      try_files $uri =404;
-      add_header Cache-Control "public, max-age=31536000, immutable" always;
-      add_header Access-Control-Allow-Origin "*" always;
-      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
-      add_header Access-Control-Allow-Headers "Range, Content-Type" always;
-      add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Accept-Ranges" always;
-      add_header Accept-Ranges bytes always;
-    }
-
-    # Cache: VTT thumbnails
-    location ~* \.vtt$ {
-      try_files $uri =404;
-      add_header Cache-Control "public, max-age=3600" always;
-      add_header Access-Control-Allow-Origin "*" always;
-      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
-      add_header Access-Control-Allow-Headers "Range, Content-Type" always;
-      add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Accept-Ranges" always;
-    }
-
-    # Cache: images/sprites (immutable)
-    location ~* \.(?:jpg|jpeg|png|webp)$ {
-      try_files $uri =404;
-      add_header Cache-Control "public, max-age=31536000, immutable" always;
-      add_header Access-Control-Allow-Origin "*" always;
-      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
-      add_header Access-Control-Allow-Headers "Range, Content-Type" always;
-    }
+  location ^~ /assets {
+    try_files $uri =404;
   }
 
   # Route 1: /cdn/* -> nav/{name}/media/{path}
@@ -183,6 +111,11 @@ server {
   # Redirect root to /watch
   location = / {
     return 301 /watch;
+  }
+
+  # Redirect /shop to external shop
+  location = /shop {
+    return 301 https://shop.trifect.us;
   }
 
   # Main location block - serve all paths from nav/

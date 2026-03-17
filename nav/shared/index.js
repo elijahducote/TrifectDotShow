@@ -139,7 +139,8 @@ function updateNavIcons() {
     } else if (node.tagName === "H2" || node.tagName === "svg") {
       link = node.parentElement.dataset.link;
     }
-    if (link) simulateLinkClick(link);
+    if (link === "shop") simulateLinkClick("https://shop.trifect.us/");
+    else if (link) simulateLinkClick(link);
   });
   
   for (;itR8;--itR8) {
