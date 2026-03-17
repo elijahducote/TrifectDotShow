@@ -1,0 +1,10 @@
+:root {
+  --base-dpi: 1px;
+  --base-font-size: 24rem;
+  --base-font: "Brisa Sans", Helvetica, Arial, sans-serif;
+  --base-text-hex: #FFF;
+  --base-bg: #37323E;
+  --base-border-size:.125em;
+  --base-spacing:.25em;
+  --topnav-bg: rgba(55, 50, 62, .375);
+}

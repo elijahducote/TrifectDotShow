@@ -1,0 +1,6 @@
+dploy
+.env
+node_modules
+assets
+bun.lock
+package.lock

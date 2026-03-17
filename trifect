@@ -1,0 +1,187 @@
+# HTTP server - redirect all traffic to HTTPS
+server {
+  listen 80;
+  listen [::]:80;
+  server_name trifect.us www.trifect.us watch.trifect.us;
+
+  # Redirect all HTTP requests to HTTPS
+  return 301 https://$host$request_uri;
+}
+
+# HTTPS server - watch.trifect.us
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+  http2 on;
+
+  server_name watch.trifect.us;
+
+  ssl_certificate /etc/letsencrypt/live/join.trifect.us/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/join.trifect.us/privkey.pem;
+
+  ssl_protocols TLSv1.2 TLSv1.3;
+
+  return 301 https://trifect.us/watch;
+}
+
+# HTTPS server - Main site
+server {
+  listen 443 ssl;
+  listen [::]:443 ssl;
+  http2 on;
+
+  server_name trifect.us www.trifect.us;
+
+  # Root directory for the project
+  root /var/www/trifect;
+
+  # SSL certificate configuration
+  ssl_certificate /etc/letsencrypt/live/trifect.us/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/trifect.us/privkey.pem;
+
+  # SSL configuration for security
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+  ssl_prefer_server_ciphers off;
+
+  # SSL session caching for performance
+  ssl_session_cache shared:SSL:10m;
+  ssl_session_timeout 10m;
+
+  # OCSP stapling for better SSL performance
+  ssl_stapling on;
+  ssl_stapling_verify on;
+  ssl_trusted_certificate /etc/letsencrypt/live/trifect.us/chain.pem;
+
+  # Rate limiting - allows 10 requests/sec with burst of 20
+  limit_req zone=general burst=20 nodelay;
+  limit_conn addr 10;
+
+  # Security headers
+  add_header Access-Control-Allow-Origin "*";
+  add_header X-Frame-Options "SAMEORIGIN" always;
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+  add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+
+  # CSP - allows known HTTPS sources, Fourthwall shop iframe
+  add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https: https://hcaptcha.com https://*.hcaptcha.com; style-src 'self' 'unsafe-inline' https: https://hcaptcha.com; img-src 'self' data: https: https://hcaptcha.com; font-src 'self' data: https:; connect-src 'self' https: https://api.hcaptcha.com https://hcaptcha.com; frame-src https://hcaptcha.com https://*.fourthwall.com; frame-ancestors 'self'; media-src 'self' blob: https:;" always;
+
+  add_header Set-Cookie "Path=/; HttpOnly; Secure; SameSite=None" always;
+
+  # Deny access to hidden files
+  location ~ /\. {
+    deny all;
+    access_log off;
+    log_not_found off;
+  }
+
+  location /assets {
+    root /var/www/trifect;
+    try_files $uri $uri/ =404;
+
+    # Keep default MIME types and add streaming types
+    include mime.types;
+    types {
+      application/vnd.apple.mpegurl m3u8;
+      application/dash+xml          mpd;
+      video/mp2t                    ts;
+      video/iso.segment             m4s;
+      text/vtt                      vtt;
+    }
+
+    # CORS headers for streaming (required for HLS.js and dash.js)
+    add_header Access-Control-Allow-Origin "*" always;
+    add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
+    add_header Access-Control-Allow-Headers "Range, Content-Type" always;
+    add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Accept-Ranges" always;
+    add_header Accept-Ranges bytes always;
+
+    # Handle preflight requests
+    if ($request_method = OPTIONS) {
+      add_header Access-Control-Allow-Origin "*";
+      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS";
+      add_header Access-Control-Allow-Headers "Range, Content-Type";
+      add_header Content-Length 0;
+      add_header Content-Type text/plain;
+      return 204;
+    }
+
+    # Cache: manifests (short TTL for live compatibility)
+    location ~* \.(?:m3u8|mpd)$ {
+      try_files $uri =404;
+      add_header Cache-Control "public, max-age=2" always;
+      add_header Access-Control-Allow-Origin "*" always;
+      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
+      add_header Access-Control-Allow-Headers "Range, Content-Type" always;
+      add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Accept-Ranges" always;
+      add_header Accept-Ranges bytes always;
+    }
+
+    # Cache: segments (immutable)
+    location ~* \.(?:ts|m4s)$ {
+      try_files $uri =404;
+      add_header Cache-Control "public, max-age=31536000, immutable" always;
+      add_header Access-Control-Allow-Origin "*" always;
+      add_header Access-Control-Allow-Methods "GET, HEAD, OPTIONS" always;
+      add_header Access-Control-Allow-Headers "Range, Content-Type" always;
+      add_header Access-Control-Expose-Headers "Content-Length, Content-Range, Accept-Ranges" always;
+      add_header Accept-Ranges bytes always;
+    }
+
+    # Cache: VTT thumbnails
+    location ~* \.vtt$ {
+      try_files $uri =404;
+      add_header Cache-Control "public, max-age=3600" always;
+      add_header Access-Control-Allow-Origin "*" always;
+    }
+
+    # Cache: images/sprites (immutable)
+    location ~* \.(?:jpg|jpeg|png|webp)$ {
+      try_files $uri =404;
+      add_header Cache-Control "public, max-age=31536000, immutable" always;
+      add_header Access-Control-Allow-Origin "*" always;
+    }
+  }
+
+  # Route 1: /cdn/* -> nav/{name}/media/{path}
+  location ~ ^/cdn/([^/]+)/(.*)$ {
+    alias /var/www/trifect.us/nav/$1/media/$2;
+  }
+
+  # Route 2: /web/* -> nav/{path}
+  location /web {
+    alias /var/www/trifect.us/nav;
+    try_files $uri $uri/ =404;
+  }
+
+  # Route 3: /src/* -> dploy/{path}
+  location /src {
+    alias /var/www/trifect.us/dploy;
+    try_files $uri $uri/ =404;
+  }
+
+  # Proxy /go/* to stooper.deno.dev
+  location /go/ {
+    proxy_pass https://stooper.deno.dev/;
+    proxy_ssl_server_name on;
+    proxy_set_header Host stooper.deno.dev;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_redirect off;
+  }
+
+  # Rewrite root to /watch
+  location = / {
+    rewrite ^ /watch last;
+  }
+
+  # Main location block - serve all paths from nav/
+  location / {
+    root /var/www/trifect/nav;
+    index index.html;
+    # Check for index.html BEFORE checking directory to prevent slash redirect
+    try_files $uri $uri/index.html $uri/ =404;
+  }
+}

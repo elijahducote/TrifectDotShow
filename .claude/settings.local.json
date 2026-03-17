@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /mnt/ext-sdcard/TrifectShow -type f -name \"*.css\" 2>/dev/null | grep -v node_modules | head -20)",
+      "Bash(grep -r \"theater-btn\\\\|settings-menu\\\\|flip-down\" /mnt/ext-sdcard/TrifectShow --include=\"*.html\" --include=\"*.js\" 2>/dev/null | grep -v node_modules | head -30)",
+      "Bash(/root/.bun/bin/bun build.js bio 2>&1)",
+      "Bash(/root/.bun/bin/bun build.js watch 2>&1)",
+      "Bash(ls -la /mnt/ext-sdcard/TrifectShow/nav/*/style* /mnt/ext-sdcard/TrifectShow/nav/*/*/style* 2>/dev/null)",
+      "Bash(bun build.js bio 2>&1)",
+      "Read(//root/.bun/bin/**)",
+      "Bash(find / -name bun -type f)",
+      "Bash(/root/.bun/bin/bun -e \"\nconst html = await Bun.file\\('/mnt/ext-sdcard/TrifectShow/nav/bio/index.html'\\).text\\(\\);\n// Check for key carousel elements\nconst checks = [\n  ['data-index=\\\\\"0\\\\\"', 'First card data-index'],\n  ['data-index=\\\\\"1\\\\\"', 'Second card data-index'],\n  ['carousel-btn carousel-prev', 'Prev button'],\n  ['carousel-btn carousel-next', 'Next button'],\n  ['carousel-indicator', 'Indicator container'],\n  ['/src/bio/index.js', 'Script tag for carousel JS'],\n];\nfor \\(const [pattern, label] of checks\\) {\n  console.log\\(html.includes\\(pattern\\) ? '  ' + label : '  ' + label\\);\n}\n\")",
+      "Bash(node -e \"\nfunction hexHue\\(hex\\) {\n  var i = parseInt\\(hex.slice\\(1\\), 16\\),\n      r = \\(i >> 16\\) / 255, g = \\(\\(i >> 8\\) & 255\\) / 255, b = \\(i & 255\\) / 255,\n      f = c => c > 0.04045 ? \\(\\(c + 0.055\\) / 1.055\\) ** 2.4 : c / 12.92,\n      lr = f\\(r\\), lg = f\\(g\\), lb = f\\(b\\),\n      l = Math.cbrt\\(0.4122214708 * lr + 0.5363325363 * lg + 0.0514459929 * lb\\),\n      m = Math.cbrt\\(0.2119034982 * lr + 0.6806995451 * lg + 0.1073969566 * lb\\),\n      s = Math.cbrt\\(0.0883024619 * lr + 0.2817188376 * lg + 0.6299787005 * lb\\),\n      a = 1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,\n      bk = 0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s;\n  return Math.round\\(\\(Math.atan2\\(bk, a\\) * 180 / Math.PI + 360\\) % 360 * 10\\) / 10;\n}\nconsole.log\\('Light pink #FFB6C1 →', hexHue\\('#FFB6C1'\\)\\);\nconsole.log\\('Chartreuse #7FFF00 →', hexHue\\('#7FFF00'\\)\\);\nconsole.log\\('Cyan #00FFFF →', hexHue\\('#00FFFF'\\)\\);\n\")",
+      "Bash(find /mnt/ext-sdcard/TrifectShow -maxdepth 2 -name \"*.md\" -type f 2>/dev/null | head -20)",
+      "Bash(grep -r \"Content-Security-Policy\\\\|csp\\\\|CSP\" /mnt/ext-sdcard/TrifectShow --include=\"*.html\" --include=\"*.js\" --include=\"*.json\" 2>/dev/null | head -20)",
+      "Bash(find /mnt/ext-sdcard/TrifectShow/nav -maxdepth 2 -type f -name \"*.js\" | grep -E \"\\(index|\\\\.js$\\)\" | head -20)",
+      "Bash(bun build.js shop 2>&1)",
+      "Bash(node build.js shop 2>&1)",
+      "Bash(export PATH=\"$PATH:/root/.bun/bin\" && bun build.js shop 2>&1)",
+      "Bash(find /mnt/ext-sdcard/TrifectShow -maxdepth 1 -type f ! -name \".*\" -exec file {} \\\\; | grep -E \"\\(ASCII|text\\)\" | cut -d: -f1)",
+      "Bash(node build.js bio 2>&1)",
+      "Bash(node --version 2>&1 && node -e \"console.log\\(process.version\\)\" 2>&1)",
+      "Bash(node --experimental-json-modules build.js bio 2>&1 | head -30)",
+      "Bash(node --no-experimental-require-module --experimental-default-type=module build.js bio 2>&1 | head -20)",
+      "Bash(node -e \"JSON.parse\\(require\\('fs'\\).readFileSync\\('nav/bio/cast.json','utf8'\\)\\); console.log\\('cast.json: valid'\\)\" 2>&1 && node --check nav/bio/bio.js 2>&1 || echo \"syntax check failed\")",
+      "Bash(node -e \"const fs = require\\('fs'\\); const data = fs.readFileSync\\('/mnt/ext-sdcard/TrifectShow/nav/bio/cast.json', 'utf8'\\); JSON.parse\\(data\\); console.log\\('cast.json: valid'\\)\" 2>&1)",
+      "Bash(xxd /mnt/ext-sdcard/TrifectShow/nav/bio/cast.json | head -10)",
+      "Bash(ls -la /mnt/ext-sdcard/TrifectShow/nav/*/index.js 2>/dev/null | head -10)",
+      "Bash(xxd /mnt/ext-sdcard/TrifectShow/nav/bio/cast.json | head -20)",
+      "Bash(node _test_bio.mjs 2>&1)",
+      "Bash(timeout 10 node -e \"\nconst {JSDOM} = require\\('jsdom'\\);\nconst DOM = new JSDOM\\('<!DOCTYPE html>'\\);\nconst van = require\\('mini-van-plate'\\);\nconst {tags} = van.vanWithDoc\\(DOM.window.document\\);\n\n// Test basic tag creation\nconsole.log\\('div:', typeof tags.div\\);\nconsole.log\\('svg:', typeof tags.svg\\);\nconsole.log\\('path:', typeof tags.path\\);\nconsole.log\\('clipPath:', typeof tags.clipPath\\);\nconsole.log\\('defs:', typeof tags.defs\\);\n\n// Test creating clipPath element\ntry {\n  var p = tags.path\\({d: 'M 0 0 L 1 1'}\\);\n  console.log\\('path el:', p.outerHTML\\);\n  var cp = tags.clipPath\\({id: 'test', clipPathUnits: 'objectBoundingBox'}, p\\);\n  console.log\\('clipPath el:', cp.outerHTML\\);\n  var d = tags.defs\\(cp\\);\n  console.log\\('defs el:', d.outerHTML\\);\n  var s = tags.svg\\({xmlns: 'http://www.w3.org/2000/svg', width: '0', height: '0'}, d\\);\n  console.log\\('svg el:', s.outerHTML\\);\n} catch\\(e\\) {\n  console.error\\('ERROR:', e.message\\);\n}\n\" 2>&1)",
+      "Bash(timeout 5 node _test_bio_mock.mjs 2>&1)",
+      "Bash(xxd /mnt/ext-sdcard/TrifectShow/_quote_test.json)"
+    ]
+  }
+}

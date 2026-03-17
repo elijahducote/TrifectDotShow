@@ -1,0 +1,355 @@
+/* Base styles - applies to all screens (Mobile first) */
+/* Default for very small screens */
+div.footer-copyright {
+  display:none !important;
+  visibility:hidden !important;
+  
+}
+div.wrapper.topnav div h2 {
+  display:none !important;
+  visibility:hidden !important;
+  touch-action:none !important;
+}
+div.container {
+  font-size:24rem !important;
+}
+
+/* Extra Small - More condensed typography for tight spaces */
+/* Width ≥ 405px AND Height ≤ 870px */
+@media screen and (min-width:404.953125px) and (max-height:869.9033203125px) {
+    div.h-captcha iframe {
+        transform:scale(1.625) !important;
+    }
+    div.footer-copyright {
+        display:none !important;
+        visibility:hidden !important;
+
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-stretch: condensed;
+        letter-spacing: 0.01em;
+    }
+
+    nav, header, footer, button {
+        font-stretch: condensed;
+        font-weight: 500;
+    }
+
+    aside, figcaption, small {
+        font-weight: 400;
+        font-style: normal;
+        font-stretch: condensed;
+    }
+
+    p, article, section {
+        line-height: 1.4;
+    }
+}
+
+/* Small - Maintain condensed but slightly more breathing room */
+/* Width ≥ 555px AND Height ≤ 700px */
+@media screen and (min-width:555.1875px) and (max-height:700px) {
+    div.h-captcha iframe {
+        transform:scale(1.625) !important;
+    }
+    div.footer-copyright {
+        display:none !important;
+        visibility:hidden !important;
+        
+    }
+    h1, h2, h3 {
+        font-stretch: condensed;
+        letter-spacing: 0;
+    }
+    
+    nav, header, footer {
+        font-stretch: condensed;
+    }
+    
+    aside {
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    blockquote {
+        font-weight: 400;
+        font-style: italic;
+        line-height: 1.5;
+    }
+}
+
+/* Medium - Balanced typography */
+/* Width ≥ 772px AND Height ≤ 1152px */
+@media screen and (min-width:772px) and (max-height:1152px) {
+    div.h-captcha iframe {
+        transform:scale(2) !important;
+    }
+    div.footer-copyright {
+        display:inline !important;
+        visibility:visible !important;
+        opacity: 1;
+    }
+    div.wrapper.topnav div svg {
+        height: 87.5% !important;
+    }
+    div.wrapper.topnav div h2 {
+      display:inline !important;
+      visibility:visible !important;
+      opacity: 1;
+      touch-action:auto !important;
+      font-size:1.125em !important;
+    }
+    div.wrapper.topnav div {
+      text-shadow: rgba(55, 50, 62, 0.9) 0 .2em .15em;
+    }
+    div.container {
+      font-size:36rem !important;
+    }
+    h1 {
+        font-weight: 900;
+        font-stretch: normal;
+    }
+
+    h2, h3 {
+        font-stretch: normal;
+    }
+
+    nav, header {
+        font-stretch: normal;
+        font-weight: 500;
+    }
+
+    aside, blockquote {
+        font-weight: 300;
+        font-style: italic;
+    }
+}
+
+/* Large - Full typography expression */
+/* Width ≥ 992px AND Height ≥ 805px */
+@media screen and (min-width:992px) and (min-height:805.25px) {
+    div.h-captcha iframe {
+        transform:scale(2) !important;
+    }
+    div.footer-copyright {
+        display:inline !important;
+        visibility:visible !important;
+        opacity: 1;
+    }
+    div.wrapper.topnav div h2 {
+      display:inline !important;
+      visibility:visible !important;
+      opacity: 1;
+      touch-action:auto !important;
+      font-size:.75em !important;
+    }
+    div.container {
+      font-size:36rem !important;
+    }
+    h1 {
+        font-weight: 900;
+        letter-spacing: -0.03em;
+    }
+
+    h2 {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    h3 {
+        font-weight: 700;
+        font-stretch: normal;
+        letter-spacing: -0.01em;
+    }
+
+    aside, blockquote, figcaption {
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.6;
+    }
+
+    small, cite {
+        font-weight: 300;
+        font-stretch: normal;
+    }
+}
+
+/* Extra Large - Enhanced readability and elegance */
+/* Width ≤ 1390.5px AND Height ≥ 826px */
+@media screen and (min-width:992px) and (max-width:1390.5px) and (min-height:825.625px) {
+    div.h-captcha iframe {
+        transform:scale(1.75) !important;
+    }
+    div.footer-copyright {
+        display:inline !important;
+        visibility:visible !important;
+        opacity: 1;
+    }
+    div.wrapper.topnav div h2 {
+      display:inline !important;
+      visibility:visible !important;
+      opacity: 1;
+      touch-action:auto !important;
+      font-size:1em !important;
+    }
+    div.container {
+      font-size:48rem !important;
+    }
+    h1 {
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        line-height: 1.0;
+    }
+    
+    h2, h3 {
+        font-stretch: normal;
+        line-height: 1.2;
+    }
+    
+    p, article, li {
+        line-height: 1.7;
+        font-weight: 400;
+    }
+    
+    aside, blockquote {
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.8;
+        letter-spacing: 0.02em;
+    }
+    
+    figcaption, cite, small {
+        font-weight: 300;
+        font-stretch: normal;
+        letter-spacing: 0.01em;
+    }
+}
+
+/* Extra Extra Large - Maximum typographic refinement */
+/* Width ≥ 1930px AND Height ≥ 1114px */
+@media screen and (min-width:1930px) and (min-height:1113.75px) {
+    div.h-captcha iframe {
+        transform:scale(2) !important;
+    }
+    div.footer-copyright {
+        display:inline !important;
+        visibility:visible !important;
+        opacity: 1;
+    }
+    div.wrapper.topnav div h2 {
+      display:inline !important;
+      visibility:visible !important;
+      opacity: 1;
+      touch-action:auto !important;
+      font-size:1em !important;
+    }
+    div.container {
+      font-size:60rem !important;
+    }
+    h1 {
+        font-weight: 900;
+        letter-spacing: -0.05em;
+        line-height: 0.95;
+    }
+    
+    h2 {
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+    }
+    
+    h3, h4 {
+        font-weight: 700;
+        font-stretch: normal;
+        letter-spacing: -0.02em;
+    }
+    
+    p, article, li, blockquote {
+        line-height: 1.8;
+        letter-spacing: 0.01em;
+    }
+    
+    aside, figcaption {
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.9;
+        letter-spacing: 0.02em;
+    }
+    
+    nav, header, footer {
+        font-weight: 500;
+        font-stretch: normal;
+        letter-spacing: 0.02em;
+    }
+    
+    small, cite {
+        font-weight: 300;
+        font-stretch: normal;
+        letter-spacing: 0.02em;
+    }
+}
+
+/* Tall narrow screens - Height ≥ 870px AND Width < 992px */
+@media screen and (min-height:870px) and (max-width:991.99px) {
+    div.h-captcha iframe {
+        transform:scale(1.5) !important;
+    }
+    div.footer-copyright {
+        display:inline !important;
+        visibility:visible !important;
+        opacity: 1;
+    }
+    div.wrapper.topnav div svg {
+        height: 62.5% !important;
+    }
+    div.container {
+      font-size:36rem !important;
+    }
+}
+
+/* Very wide but shorter screens - Width ≥ 1391px AND Height < 1114px */
+@media screen and (min-width:1390.5px) and (max-height:1113.74px) and (min-height:805.25px) {
+    div.h-captcha iframe {
+        transform:scale(2.375) !important;
+    }
+    div.footer-copyright {
+        display:inline !important;
+        visibility:visible !important;
+        opacity: 1;
+    }
+    div.wrapper.topnav div svg {
+        height: 100% !important;
+    }
+    div.wrapper.topnav div h2 {
+      display:inline !important;
+      visibility:visible !important;
+      opacity: 1;
+      touch-action:auto !important;
+      font-size:1.5em !important;
+    }
+    div.container {
+      font-size:48rem !important;
+    }
+}
+
+/* HIGH CONTRAST MODE ADJUSTMENTS */
+@media (prefers-contrast: high) {
+    * {
+        font-weight: 500;
+    }
+    
+    h1, h2, h3, strong, b, legend, th, output {
+        font-weight: 900;
+    }
+    
+    small, figcaption, cite, footer, sub, sup, samp, tfoot, del, s, rt, rp {
+        font-weight: 400;
+    }
+}
+
+/* REDUCED MOTION PREFERENCES */
+@media (prefers-reduced-motion: reduce) {
+    a, button, h1, h2, h3, nav a {
+        transition: none;
+    }
+}

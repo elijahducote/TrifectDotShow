@@ -1,0 +1,144 @@
+/* Footer flows in document after content */
+.tab-list > section:last-child {
+  margin-bottom: 0;
+}
+
+.footer-main {
+  pointer-events: auto;
+  position: relative;
+  isolation: isolate;
+  z-index: 999;
+  box-sizing: border-box;
+  display: flex;
+  color: #fff;
+  letter-spacing: .075em;
+  background: linear-gradient(145deg, #4c4c4c, #232323);
+  border-radius: .625em;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  /* CHANGED: Removed large vertical margins */
+  margin: 0; 
+  /* CHANGED: Reduced padding from 1.5em to 0.75em */
+  padding: .125em .5em; 
+  font-weight: 400;
+  font-stretch: 100%;
+  line-height: 1.3; /* CHANGED: Tighter line height */
+  box-shadow: inset 0 -1em 1.2em rgba(31, 38, 135, 0.18),
+              0 0.2em 0.5em rgba(31, 38, 135, 0.5);
+}
+a {
+  color: cyan;
+}
+.footer-content {
+  display: flex;
+  letter-spacing: .075em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1em; /* CHANGED: Reduced gap */
+  width: 100%;
+  font-weight: 400;
+  font-stretch: 100%;
+  line-height: 1.4;
+  font-size: 0.8em; /* CHANGED: Slightly smaller text overall */
+}
+
+.footer-heading {
+  letter-spacing: 0;
+  margin-bottom: 0; /* CHANGED: Removed margin */
+  font-weight: 700;
+  font-stretch: 100%;
+}
+
+.footer-content a {
+  margin-bottom: 1em;
+}
+
+.footer-copyright {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  z-index: -1 !important;
+  bottom: 0;
+}
+
+.footer-copyright-text {
+  letter-spacing: .02em;
+  opacity: .8;
+  font-weight: 300;
+  font-stretch: 75%;
+  line-height: 1.2;
+}
+
+.footer-img-container {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1em;
+}
+
+.footer-img {
+  display: block;
+  object-fit: scale-down;
+  /* CHANGED: Reduced from 10em to 4em (approx 100px) */
+  width: 6.4em; 
+  height: 6.4em;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 767px) {
+  .footer-main {
+    flex-direction: row; /* CHANGED: Keep row even on mobile if possible, or stack tightly */
+    gap: 1em;
+  }
+  
+  .footer-content {
+    text-align: left;
+    align-items: flex-start;
+  }
+  
+  .footer-img-container {
+    margin-top: 0;
+    margin-left: 0.5em;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .footer-img {
+    border-radius: .25em;
+    width: 4em; /* Even smaller on tiny screens */
+    height: 4em;
+  }
+  
+  .footer-main {
+    padding: 0.5em;
+  }
+}
+/* ... rest of your high contrast/motion queries ... */
+
+@media (prefers-contrast: high) {
+  .footer-heading {
+    font-weight: 900;
+  }
+  
+  .footer-content {
+    font-weight: 500;
+  }
+  
+  .footer-copyright-text {
+    font-weight: 400;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-main {
+    transition: none;
+  }
+}

@@ -1,0 +1,59 @@
+#shop {
+  position: relative;
+  width: 100%;
+}
+
+.shop-frame {
+  border: 0;
+  width: 100%;
+  height: calc(100vh - 3em);
+}
+
+.shop-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.shop-loader svg {
+  width: 3em;
+  height: 3em;
+  animation: rt 1s linear infinite;
+}
+
+.shop-error {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  padding: 2em;
+  text-align: center;
+}
+
+.shop-error a {
+  text-decoration: underline;
+}
+
+.shop-ready .shop-loader {
+  display: none;
+}
+
+.shop-failed .shop-loader {
+  display: none;
+}
+
+.shop-failed .shop-frame {
+  display: none;
+}
+
+.shop-failed .shop-error {
+  display: flex;
+}
+
+.tab-list:has(#shop) {
+  padding-bottom: 0;
+  min-height: auto;
+}

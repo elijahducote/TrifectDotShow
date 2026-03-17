@@ -1,0 +1,64 @@
+{
+  "paths":
+  [
+    "watch",
+    "shop",
+    "talk",
+    "bio"
+  ],
+  "watch": {
+    "title": "Watch - Trifect Us",
+    "metadata":
+    [
+      ["viewport", "width=device-width,initial-scale=1.0"],
+      ["keywords", ""],
+      "https://cdn.jsdelivr.net/npm/hls.js@latest",
+      "https://cdn.jsdelivr.net/npm/dashjs@latest/dist/dash.all.min.js",
+      "/src/shared/index.js",
+      "/src/shared/video/player.js",
+      "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css",
+      "/src/shared/index.css",
+      "/src/shared/playback.css"
+    ]
+  },
+  "shop": {
+    "title": "Shop - Trifect Us",
+    "metadata":
+    [
+      ["viewport", "width=device-width,initial-scale=1.0"],
+      ["keywords", ""],
+      "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css",
+      "/src/shared/index.js",
+      "/src/shared/index.css",
+      "/src/shop/main.css",
+      "/src/shop/index.js"
+    ]
+  },
+  "talk": {
+    "title": "Talk - Trifecr Us",
+    "metadata":
+    [
+      ["viewport", "width=device-width,initial-scale=1.0"],
+      ["keywords", ""],
+      "/src/shared/pure.css",
+      "https://js.hcaptcha.com/1/api.js?hl=en&recaptchacompat=on",
+      "/src/shared/index.js",
+      "/src/shared/index.css",
+      "/src/talk/main.css"
+    ]
+  },
+  "bio": {
+    "title": "Cast - Trifect Us",
+    "metadata":
+    [
+      ["viewport", "width=device-width,initial-scale=1.0"],
+      ["description", "Meet the characters of The Trifect."],
+      ["keywords", ""],
+      "https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css",
+      "/src/shared/index.js",
+      "/src/shared/index.css",
+      "/src/bio/main.css",
+      "/src/bio/index.js"
+    ]
+  }
+}

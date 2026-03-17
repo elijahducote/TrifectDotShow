@@ -1,0 +1,61 @@
+input, textarea {
+  text-align: center;
+}
+
+.full-width-form {
+    width: 75%;
+    display: block;
+}
+.full-width-form button {
+  margin-top:0.875em;
+  padding: .75em;
+  border-radius: 0.75em;
+  font-size: 1.125em;
+}
+
+/* Target form elements inside that class */
+.full-width-form input:not([type="checkbox"]):not([type="radio"]),
+.full-width-form select,
+.full-width-form textarea {
+    width: 100%;           /* Takes up full width */
+    max-width: 100%;       /* Prevents overflow */
+    box-sizing: border-box;/* Ensures padding doesn't add to width */
+    display: block;        /* Forces them to sit on their own lines */
+    margin-bottom: 1em !important;    /* Adds slight spacing between stacked elements */
+    padding: 0 !important;
+    margin-top: .25em !important;
+    height: 2.5em;
+    color: #FFF !important;
+    border-color: #FFF;
+    background: linear-gradient(145deg, #4c4c4c, #232323);
+    border-width: 0.0625em;
+}
+
+/* Optional: Fix textarea resizing to vertical only so it doesn't break layout */
+.full-width-form textarea {
+    resize: vertical;
+    height: 4.9em;
+    padding: 0.125em !important;
+}
+
+input[type="checkbox"] {
+  width: 1em;  /* Or 1.5em, etc. */
+  height: 1em; /* Or 1.5em, etc. */
+  accent-color: green !important;
+}
+
+div.h-captcha iframe {
+  transform:scale(1.625);
+  height: 18em;
+  border-width: 0.05em !important;
+  position: relative;
+  box-sizing:border-box;
+  transform-origin:center;
+}
+div.h-captcha {
+  padding-top: 2em;
+  padding-bottom: 1em;
+}
+label {
+  user-select: none;
+}

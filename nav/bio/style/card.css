@@ -1,0 +1,282 @@
+.bio-card {
+  max-width: 28em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background: linear-gradient(145deg, #4c4c4c, #232323);
+  background: linear-gradient(
+    145deg in oklch,
+    oklch(0.35 0.005 var(--card-hue)) 0%,
+    oklch(0.20 0.005 var(--card-hue)) 100%
+  );
+}
+
+.bio-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 30% 20%,
+    oklch(var(--card-L) 0.22 var(--card-hue) / 0.12) 0%,
+    transparent 70%
+  );
+}
+
+/* Blank avatar placeholder */
+.bio-avatar-wrap {
+  box-sizing: border-box;
+  width: 6em;
+  height: 6em;
+  margin: 0 auto 1em;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(to bottom left, #333, #000);
+  box-shadow:
+    inset 0.2em -0.2em 0.6em rgba(0, 0, 0, 0.4),
+    0 0.15em 0.5em oklch(var(--card-L) 0.22 var(--card-hue) / 0.15);
+}
+
+.bio-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Non-circle frame adjustments */
+.bio-avatar-wrap[data-frame] {
+  border-radius: 0;
+  border: none;
+  padding: 0.0625em;
+  box-shadow: none;
+  filter: drop-shadow(0 0.15em 0.5em oklch(var(--card-L) 0.22 var(--card-hue) / 0.15));
+}
+
+.bio-avatar-wrap[data-frame] .bio-avatar {
+  border-radius: 0;
+}
+
+/* Per-shape clip-path selectors */
+[data-frame="heart"] { clip-path: url(#frame-heart) }
+[data-frame="rounded-heart"] { clip-path: url(#frame-rounded-heart) }
+[data-frame="triangle"] { clip-path: url(#frame-triangle) }
+[data-frame="rounded-triangle"] { clip-path: url(#frame-rounded-triangle) }
+[data-frame="diamond"] { clip-path: url(#frame-diamond) }
+[data-frame="rounded-diamond"] { clip-path: url(#frame-rounded-diamond) }
+[data-frame="square"] { clip-path: url(#frame-square) }
+[data-frame="rounded-square"] { clip-path: url(#frame-rounded-square) }
+[data-frame="pentagon"] { clip-path: url(#frame-pentagon) }
+[data-frame="rounded-pentagon"] { clip-path: url(#frame-rounded-pentagon) }
+[data-frame="hexagon"] { clip-path: url(#frame-hexagon) }
+[data-frame="rounded-hexagon"] { clip-path: url(#frame-rounded-hexagon) }
+[data-frame="octagon"] { clip-path: url(#frame-octagon) }
+[data-frame="rounded-octagon"] { clip-path: url(#frame-rounded-octagon) }
+[data-frame="star"] { clip-path: url(#frame-star) }
+[data-frame="rounded-star"] { clip-path: url(#frame-rounded-star) }
+
+/* Name + gender row */
+.bio-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+}
+
+.bio-name {
+  display: inline;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.bio-name small {
+  font-weight: 400;
+  font-size: 0.55em;
+  opacity: 0.6;
+  display: block;
+  margin-top: 0.25em;
+}
+
+.bio-gender {
+  width: 1.1em;
+  height: 1.1em;
+  flex-shrink: 0;
+  vertical-align: middle;
+  align-self: flex-start;
+  margin-top: 0.15em;
+}
+
+.bio-gender-male { color: oklch(72% 0.14 250); fill: oklch(72% 0.14 250); }
+.bio-gender-female { color: oklch(75% 0.18 350); fill: oklch(75% 0.18 350); }
+
+.bio-kind {
+  display: block;
+  font-weight: 300;
+  font-stretch: condensed;
+  opacity: 0.7;
+  margin-top: 0.25em;
+  letter-spacing: 0.04em;
+}
+
+.bio-aliases {
+  font-stretch: condensed;
+  opacity: 0.6;
+  margin-top: 0.75em;
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.bio-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.75em;
+  justify-content: center;
+}
+
+.bio-traits-label {
+  width: 100%;
+  text-align: center;
+  font-size: 0.85em;
+  opacity: 0.6;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.bio-trait {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  border: 0.0625em solid oklch(var(--card-L) 0.22 var(--card-hue) / 0.35);
+  border-radius: 1.5em;
+  background: oklch(var(--card-L) 0.22 var(--card-hue) / 0.08);
+  font-size: 0.85em;
+  letter-spacing: 0.03em;
+  color: oklch(var(--card-L) 0.22 var(--card-hue));
+}
+
+.bio-card .divider { height: 0.5em; }
+
+.bio-card hr {
+  border-top-color: oklch(var(--card-L) 0.22 var(--card-hue) / 0.4);
+}
+
+.bio-card > blockquote {
+  background: linear-gradient(
+    197deg in oklch,
+    oklch(0.65 0.10 var(--card-hue) / 0.25) 0%,
+    oklch(0.45 0.08 var(--card-hue) / 0.75) 100%
+  ), rgba(0, 0, 0, 0.1);
+}
+
+/* --- Carousel --- */
+
+#cast {
+  position: relative;
+}
+
+/* Buttons and indicator hidden until JS initializes */
+.carousel-btn,
+.carousel-indicator {
+  display: none;
+}
+
+/* Progressive enhancement: JS adds carousel-init */
+#cast.carousel-init .bio-card {
+  display: none;
+}
+
+#cast.carousel-init .bio-card.carousel-active {
+  display: block;
+}
+
+@keyframes carousel-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#cast.carousel-init .bio-card.carousel-fade {
+  animation: carousel-fadeIn 0.4s ease;
+}
+
+#cast.carousel-init .carousel-btn,
+#cast.carousel-init .carousel-indicator {
+  display: flex;
+}
+
+/* Prev / Next buttons */
+.carousel-btn {
+  position: absolute;
+  top: 2.5em;
+  width: 2.5em;
+  height: 2.5em;
+  border-radius: 50%;
+  border: 0.0625em solid oklch(var(--card-L) 0.22 var(--card-hue) / 0.35);
+  background: oklch(var(--card-L) 0.22 var(--card-hue) / 0.08);
+  color: oklch(var(--card-L) 0.22 var(--card-hue));
+  font-size: 1.25em;
+  line-height: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, box-shadow 0.2s;
+  z-index: 2;
+}
+
+.carousel-btn:hover {
+  background: oklch(var(--card-L) 0.22 var(--card-hue) / 0.18);
+  box-shadow: 0 0 0.5em oklch(var(--card-L) 0.22 var(--card-hue) / 0.25);
+}
+
+.carousel-prev {
+  left: -3.25em;
+}
+
+.carousel-next {
+  right: -3.25em;
+}
+
+/* Indicator dots */
+.carousel-indicator {
+  justify-content: center;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+.carousel-dot {
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.carousel-dot.active {
+  background: oklch(var(--card-L) 0.22 var(--card-hue));
+  box-shadow: 0 0 0.4em oklch(var(--card-L) 0.22 var(--card-hue) / 0.5);
+}
+
+/* Mobile: buttons inside card area */
+@media (max-width: 555px) {
+  .carousel-prev {
+    left: 0.25em;
+  }
+  .carousel-next {
+    right: 0.25em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-btn,
+  .carousel-dot {
+    transition: none;
+  }
+  #cast.carousel-init .bio-card.carousel-fade {
+    animation-duration: 0s;
+  }
+}

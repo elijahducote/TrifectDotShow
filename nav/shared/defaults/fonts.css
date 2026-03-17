@@ -1,0 +1,496 @@
+/* Thin Weight - Normal Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-Thin.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Thin Weight - Italic Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-ThinItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-ThinItalic.woff") format("woff");
+    font-weight: 100;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Thin Weight - Condensed Normal */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-ThinCd.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-ThinCd.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Thin Weight - Condensed Italic */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-ThinCdItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-ThinCdItalic.woff") format("woff");
+    font-weight: 100;
+    font-style: italic;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Light Weight - Normal Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-Light.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Light Weight - Italic Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-LightItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-LightItalic.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Light Weight - Condensed Normal */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-LightCd.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-LightCd.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Light Weight - Condensed Italic */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-LightCdItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-LightCdItalic.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Regular Weight - Normal Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-Regular.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Regular Weight - Italic Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-Italic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-Italic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Regular Weight - Condensed Normal */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-RegularCd.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-RegularCd.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Regular Weight - Condensed Italic */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-CdItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-CdItalic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Medium Weight - Normal Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-Medium.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Medium Weight - Italic Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-MediumItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-MediumItalic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Medium Weight - Condensed Normal */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-MediumCd.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-MediumCd.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Medium Weight - Condensed Italic */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-MediumCdItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-MediumCdItalic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Bold Weight - Normal Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-Bold.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-Bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Bold Weight - Italic Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-BoldItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-BoldItalic.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Bold Weight - Condensed Normal */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-BoldCd.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-BoldCd.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Bold Weight - Condensed Italic */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-BoldCdItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-BoldCdItalic.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Black Weight - Normal Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-Black.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-Black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Black Weight - Italic Style */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-BlackItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-BlackItalic.woff") format("woff");
+    font-weight: 900;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Black Weight - Condensed Normal */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-BlackCd.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-BlackCd.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* Black Weight - Condensed Italic */
+@font-face {
+    font-family: "Brisa Sans";
+    src: url("/web/typo/BrisaSans-BlackCdItalic.woff2") format("woff2"),
+         url("/web/typo/v1/BrisaSans-BlackCdItalic.woff") format("woff");
+    font-weight: 900;
+    font-style: italic;
+    font-stretch: condensed;
+    font-display: swap;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "calt" 1;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+/* BLACK WEIGHT - NORMAL (900) */
+h1 { 
+    font-weight: 900; 
+    font-stretch: normal;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+/* BOLD WEIGHT - NORMAL (700) */
+h2, strong, b, legend, th, output {
+    font-weight: 700; 
+    font-stretch: normal;
+    letter-spacing: -0.02em;
+}
+
+h2 { line-height: 1.2; }
+
+/* BOLD WEIGHT - CONDENSED (700) */
+h3, thead {
+    font-weight: 700; 
+    font-stretch: condensed;
+    letter-spacing: -0.01em;
+}
+
+h3 { line-height: 1.3; }
+
+/* MEDIUM WEIGHT - NORMAL (500) */
+h4, header, nav, mark, button, label, a, summary, dfn, ins, progress, meter, data {
+    font-weight: 500; 
+    font-stretch: normal;
+    letter-spacing: 0;
+}
+
+h4 { line-height: 1.4; }
+
+/* MEDIUM WEIGHT - CONDENSED (500) */
+h5, kbd {
+    font-weight: 500; 
+    font-stretch: condensed;
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+}
+
+/* MEDIUM WEIGHT - CONDENSED SMALL-CAPS (500) */
+abbr {
+    font-weight: 500;
+    font-stretch: condensed;
+    letter-spacing: 0.02em;
+    font-variant: small-caps;
+}
+
+/* REGULAR WEIGHT - NORMAL (400) */
+html, body, main, article, section, p, ul, ol, li, input, textarea, select, option, fieldset, table, tbody, td, details, ruby, bdi, bdo, dialog {
+    font-weight: 400;
+    font-stretch: normal;
+}
+
+body, p, ul, ol, article { line-height: 1.6; }
+textarea, dialog { line-height: 1.5; }
+
+/* REGULAR WEIGHT - ITALIC (400) */
+h6, em, i, var, q {
+    font-weight: 400; 
+    font-style: italic;
+    font-stretch: normal;
+    letter-spacing: 0.01em;
+}
+
+h6 { line-height: 1.4; }
+
+/* REGULAR WEIGHT - CONDENSED (400) */
+code, time {
+    font-weight: 400;
+    font-stretch: condensed;
+    letter-spacing: 0.02em;
+}
+
+/* LIGHT WEIGHT - NORMAL (300) */
+dd {
+    font-weight: 300;
+    font-stretch: normal;
+    line-height: 1.5;
+}
+
+/* LIGHT WEIGHT - ITALIC (300) */
+aside, blockquote, figcaption, address {
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+    letter-spacing: 0.01em;
+    line-height: 1.5;
+}
+
+blockquote { line-height: 1.7; }
+address { line-height: 1.4; }
+
+/* LIGHT WEIGHT - CONDENSED (300) */
+footer, small, sub, sup, samp, tfoot, del, s, rt, rp {
+    font-weight: 300;
+    font-stretch: condensed;
+    letter-spacing: 0.02em;
+}
+
+footer { line-height: 1.4; }
+small { font-size: 0.875em; }
+sub, sup { font-size: 0.75em; }
+rt { font-size: 0.7em; }
+
+/* LIGHT WEIGHT - CONDENSED ITALIC (300) */
+cite {
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: condensed;
+    letter-spacing: 0.02em;
+}
+
+/* MEDIUM WEIGHT - ITALIC (500) */
+dt, caption {
+    font-weight: 500;
+    font-style: italic;
+    font-stretch: normal;
+    letter-spacing: 0.01em;
+}
+
+/* MONOSPACE FAMILIES */
+code, kbd, samp, pre {
+    font-family: "Brisa Sans", "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+}
+
+pre {
+    font-weight: 300;
+    font-stretch: normal;
+    line-height: 1.4;
+}
+
+kbd { font-size: 0.9em; }

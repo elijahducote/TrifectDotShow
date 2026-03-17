@@ -1,0 +1,30 @@
+{
+  "name": "webapp",
+  "version": "1.0.1",
+  "description": "",
+  "main": "./serve.js",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --hot serve.js",
+    "build": "esbuild './generx/tab/*.css' './generx/tab/*.js' './generx/tab/**/*.css' './generx/tab/**/*.js' --loader:.js=js --loader:.css=css --loader:.woff=file --loader:.woff2=file --public-path='/web' --outbase='./generx/tab' --entry-names='[dir]/[name]' --asset-names='[dir]/[name]' --format=esm --platform=browser --target=chrome134,edge134,firefox138,node20,opera119,ios18,safari18.4 --charset=utf8 --bundle --drop:debugger --pure:console.info --pure:console.debug --pure:console.warn --pure:window.alert --minify=true --legal-comments=none --splitting --keep-names --tree-shaking=true --outdir='./generx/dploy'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "vanjs-core": "^1.6.0",
+    "vanjs-ext": "^0.6.3"
+  },
+  "devDependencies": {
+    "busboy": "^1.6.0",
+    "create-favicon": "^2.1.0",
+    "glob": "^13.0.0",
+    "hono": "^4.11.1",
+    "htmlfy": "^1.0.1",
+    "jsdom": "^27.3.0",
+    "mini-van-plate": "^0.6.3",
+    "mrmime": "^2.0.1",
+    "vanjs-feather": "^0.1.3"
+  }
+}

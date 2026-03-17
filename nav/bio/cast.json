@@ -1,0 +1,71 @@
+{
+  "avatarUrl": "/cdn/bio/",
+  "cast": [
+    {
+      "id": "lf",
+      "color": "#FEB8AC",
+      "frame": "heart",
+      "name": { "text": "Lumin Farer", "epithet": null, "former": null },
+      "gender": "female",
+      "kind": "Chimera Hesperidian",
+      "quote": "\u201cI\u2019m from the post office Elpis Express. I have a letter for you, Mr. Arcto!\u201d",
+      "aliases": "Lumi, Pilgrim, The Courier",
+      "traits": ["Glow","High Immune Function"]
+    },
+    {
+      "id": "wt",
+      "color": "#7FFF00",
+      "frame": "circle",
+      "name": { "text": "Wurbly Ferra", "epithet": "\u2018Rainmaker\u2019", "former": "(formerly Wurbly Turbly)" },
+      "gender": "male",
+      "kind": "Tortile (Shellman)",
+      "quote": "\u201cYou opened this wound, if you seal it... Could be, it wasn\u2019t meant to be bloodlet,\u201d",
+      "aliases": "Wurbly Jr., W.T., The Weaver, \"The Great Poshlost\"",
+      "traits": ["Unbound Will", "Light Burden"]
+    },
+    {
+      "id": "cl",
+      "color": "#FF0000",
+      "frame": "triangle",
+      "name": { "text": "Crimson Legend", "epithet": null, "former": null},
+      "gender": "male",
+      "kind": "Human",
+      "quote": "\u201cGraphite pencils are nice on days without being stuck in an artistic rut.\u201d",
+      "aliases": "The Legend",
+      "traits": ["Open-hand Flame", "Entangling Vines"]
+    },
+    {
+      "id": "db",
+      "color": "#FCAE2F",
+      "frame": "triangle",
+      "name": { "text": "Dr. Basketball", "epithet": null, "former": "(formerly Devon Rodemor)" },
+      "gender": "male",
+      "kind": "Objectian",
+      "quote": "\u201cHow could you steal his rubberducky?\u201d",
+      "aliases": "Peace Keeper",
+      "traits": ["Breathless", "Fear/Pain Negation"]
+    },
+    {
+      "id": "sb",
+      "color": "#08A946",
+      "frame": "circle",
+      "name": { "text": "Sol Arcto", "epithet": "\u2018Slothbear\u2019", "former": null },
+      "gender": "male",
+      "kind": "Anima",
+      "quote": "\u201cWhy wouldn\u2019t you be? Everyone is my friend!\u201d",
+      "aliases": "Red Slothbearer",
+      "traits": ["Mentibolia"]
+    },
+    {
+      "id": "wtsr",
+      "color": null,
+      "frame": "circle",
+      "name": { "text": "Dr. Wurbly Turbly", "epithet": null, "former": null },
+      "gender": "male",
+      "kind": "Turtle",
+      "quote": "\u201cOh, how it\u2019s like to be a parent!\u201d",
+      "aliases": "Doctor, Senior",
+      "traits": ["Wealthy"]
+    }
+  ]
+}

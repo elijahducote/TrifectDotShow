@@ -1,0 +1,679 @@
+.thumbnail-img, .preview-img {
+  will-change: transform, background-position;
+  backface-visibility: hidden;
+}
+
+/* GPU compositing hints */
+video {
+  transform: translateZ(0);
+}
+.timeline-container::after { /* progress bar */
+  will-change: transform;
+}
+.thumb-indicator {
+  will-change: transform;
+}
+main > div.container {
+  overflow-x: clip !important;
+  overflow-y: auto !important;
+}
+
+main .wrapper.tab-list,
+main section {
+  overflow: visible !important;
+}
+
+section {
+  width: 100%;
+}
+
+/* Ensure all video player containers allow overflow for settings menu */
+section .video-container,
+section .video-controls-container,
+section .controls {
+  overflow: visible !important;
+}
+
+div.settings-container, div.duration-container {
+ display: flex;
+ flex-flow: row wrap;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ width:var(--video-icon-size);
+}
+
+/* Video Container */
+.video-container {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  max-width: 100%;
+  /* FIXED: Constrain height to account for top nav (3em) + video info spacing */
+  height: 56.25vw;
+  max-height: calc(100vh - 6em);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: auto;
+  background-color: #232323;
+  overflow: visible;
+  contain: layout style;
+}
+
+/* Theater and Fullscreen modes */
+.video-container.theater,
+.video-container.full-screen {
+  max-width: initial;
+  width: 100%;
+  /* Keep overflow visible for settings menu */
+  overflow: visible;
+}
+
+.video-container.theater {
+  height: auto;
+  max-height: calc(100vh - 3em);
+}
+
+.video-container.full-screen {
+  height: 100vh;
+  max-height: 100vh;
+  /* Remove layout containment in fullscreen — it creates a containing block
+     that can clip or misposition absolutely positioned menus like settings */
+  contain: style;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  /* Ensure video fills container properly */
+  object-fit: contain;
+  /* Clip video to container bounds */
+  max-height: 100%;
+  max-width: 100%;
+}
+
+/* Loading Spinner - Cyan theme */
+.loading-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3.75em;
+  height: 3.75em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  z-index: 50;
+}
+
+.video-container.buffering .loading-spinner {
+  opacity: 1;
+}
+
+.loading-spinner svg {
+  width: 100%;
+  height: 100%;
+  color: #0FF;
+}
+
+.loading-spinner circle {
+  stroke-dasharray: 80, 200;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+}
+
+/* Only run spinner animations when actually buffering */
+.video-container.buffering .loading-spinner svg {
+  animation: spinner-rotate 1s linear infinite;
+}
+
+.video-container.buffering .loading-spinner circle {
+  animation: spinner-dash 1.5s ease-in-out infinite;
+}
+
+@keyframes spinner-rotate {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinner-dash {
+  0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
+  50% { stroke-dasharray: 89, 200; stroke-dashoffset: -2.1875em; }
+  100% { stroke-dasharray: 89, 200; stroke-dashoffset: -7.75em; }
+}
+
+/* Video Controls Container - FIXED: Always at bottom, overflow visible for menus */
+.video-controls-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+  /* CRITICAL: Must be visible to allow settings menu to overflow */
+  overflow: visible;
+  pointer-events: none;
+  /* Ensure it stays at the bottom */
+  margin-top: auto;
+}
+
+.video-controls-container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  aspect-ratio: 6 / 1;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Controls show on hover (non-fullscreen only), scrubbing, or explicit show */
+.video-container:not(.full-screen):hover .video-controls-container,
+.video-container.scrubbing .video-controls-container,
+.video-container.controls-visible .video-controls-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Fullscreen: controls only visible via controls-visible class or paused */
+.video-container.full-screen .video-controls-container {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.video-container.full-screen.controls-visible .video-controls-container,
+.video-container.full-screen.paused .video-controls-container {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hide cursor when controls are hidden in fullscreen */
+.video-container.full-screen:not(.controls-visible):not(.paused) {
+  cursor: none;
+}
+
+/* Hide controls completely in picture-in-picture mode */
+.video-container.mini-player .video-controls-container {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+button {
+  display:flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align:center !important;
+  place-content:center;
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+/* Controls */
+.video-controls-container .controls {
+  display: flex;
+  gap: 0.5em;
+  padding: 0.25em;
+  align-items: center;
+  /* Allow settings menu to overflow */
+  overflow: visible;
+}
+
+.video-controls-container .controls button {
+  position: relative;
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+  max-height:100% !important;
+  width:auto !important;
+  height:auto;
+  font-size: 0.875em;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 150ms ease-in-out;
+}
+
+.video-controls-container .controls button:hover {
+  opacity: 1;
+}
+
+.video-controls-container .controls button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.video-controls-container .controls button.hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -999;
+  user-select: none;
+}
+
+/* Tooltips - Cyan accent */
+.video-controls-container .controls button[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.95);
+  color: #0FF;
+  padding: 0.3125em 0.625em;
+  border-radius: 0.25em;
+  border: 0.0625em solid rgba(0, 255, 255, 0.3);
+  font-size: 0.75em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+  margin-bottom: 0.5em;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+  z-index: 2;
+}
+
+/* Tooltip repositioning for left edge - anchor to left side of button */
+.video-controls-container .controls button.tooltip-left[data-tooltip]::after {
+  left: 0 !important;
+  right: auto !important;
+  transform: translateX(0) !important;
+}
+
+/* Tooltip repositioning for right edge - anchor to right side of button */
+.video-controls-container .controls button.tooltip-right[data-tooltip]::after {
+  left: auto !important;
+  right: 0 !important;
+  transform: translateX(0) !important;
+}
+
+.video-controls-container .controls button[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+.settings-container.active .settings-btn[data-tooltip]::after {
+  display: none;
+}
+
+/* Hidden utility - OPTIMIZED */
+.visually-hidden {
+  display: none;
+}
+
+/* Icon visibility - OPTIMIZED: Use only display for better performance */
+.video-container.paused .pause-icon,
+.video-container:not(.paused) .play-icon,
+.video-container.theater .tall,
+.video-container:not(.theater) .wide,
+.video-container.full-screen .open,
+.video-container:not(.full-screen) .close,
+.volume-high-icon,
+.volume-low-icon,
+.volume-muted-icon {
+  display: none;
+}
+
+.video-container[data-volume-level="high"] .volume-high-icon,
+.video-container[data-volume-level="low"] .volume-low-icon,
+.video-container[data-volume-level="muted"] .volume-muted-icon {
+  display: block;
+}
+
+/* Volume Container */
+.volume-container {
+  height:1em;
+  min-width:1em;
+  width:auto;
+  display: flex;
+  align-items: center;
+}
+
+.volume-slider {
+  width: 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: width 150ms ease-in-out, transform 150ms ease-in-out;
+  accent-color: #0FF;
+}
+
+.volume-container:hover .volume-slider,
+.volume-slider:focus-within {
+  width: 6.25em;
+  transform: scaleX(1);
+}
+
+/* Duration Container */
+.duration-container {
+  display: flex;
+  align-items: center;
+  gap: 0.125em;
+  flex-grow: 1;
+  font-size: 0.75em;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Captions Button - Cyan underline */
+.video-container.captions .captions-btn {
+  border-bottom: 0.1875em solid #0FF;
+}
+
+/* Wide Button */
+.video-controls-container .controls button.wide-btn {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 500;
+}
+
+/* Settings Container */
+.settings-container {
+  position: relative;
+  touch-action: manipulation;
+}
+
+.settings-menu {
+  position: absolute;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  border: 0.0625em solid rgba(0, 255, 255, 0.2);
+  border-radius: 0.5em;
+  min-width: 8em;
+  padding: 0.5em 0;
+  max-height: 15em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 255, 255, 0.5) transparent;
+  display: none;
+  box-shadow: 0 0.25em 1.25em rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  /* Default: position above button (controls are at bottom) */
+  bottom: 100%;
+  margin-bottom: 0.625em;
+}
+
+/* Flip menu below button when no room above */
+.settings-menu.flip-down {
+  bottom: auto;
+  margin-bottom: 0;
+  top: 100%;
+  margin-top: 0.625em;
+}
+
+.settings-container.active .settings-menu {
+  display: block;
+}
+
+/* Fullscreen: keep absolute positioning relative to settings-container, increase z-index */
+.video-container.full-screen .settings-container.active .settings-menu {
+  display: block;
+  z-index: 10000;
+  max-height: calc(100vh - 5em);
+  max-height: calc(100dvh - 5em);
+}
+
+/* Settings menu repositioning for left edge */
+.settings-menu.flip-left {
+  right: auto;
+  left: 0;
+}
+
+/* Settings menu scrollbar styling */
+.settings-menu::-webkit-scrollbar {
+  width: 0.375em;
+}
+
+.settings-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.settings-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.5);
+  border-radius: 0.25em;
+}
+
+.settings-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.7);
+}
+
+.settings-menu-header {
+  padding: 0.5em 1em;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: #0FF;
+  border-bottom: 0.0625em solid rgba(0, 255, 255, 0.15);
+  margin-bottom: 0.25em;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.quality-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 1em;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.875em;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: system-ui, -apple-system, sans-serif;
+  transition: background-color 100ms ease-in-out;
+}
+
+.quality-option:hover {
+  background: rgba(0, 255, 255, 0.1);
+}
+
+/* Mobile: larger touch targets */
+@media (pointer: coarse), (hover: none) {
+  .quality-option {
+    min-height: 2.75em;
+    padding: 0.75em 1em;
+  }
+
+  /* Ensure menu is scrollable if it doesn't fit */
+  .settings-menu {
+    max-height: min(15em, 50vh);
+  }
+
+  .video-container.full-screen .settings-container.active .settings-menu {
+    max-height: min(15em, calc(100dvh - 5em));
+    z-index: 10000;
+  }
+}
+
+.quality-check {
+  width: var(--video-icon-size);
+  opacity: 0;
+  color: #0FF;
+}
+
+.quality-option.active .quality-check {
+  opacity: 1;
+}
+
+.quality-badge {
+  margin-left: auto;
+  font-size: 0.6875em;
+  padding: 0.125em 0.25em;
+  background: rgba(0, 255, 255, 0.2);
+  color: #0FF;
+  border-radius: 0.125em;
+}
+
+/* Timeline Container - OPTIMIZED: GPU acceleration */
+.timeline-container {
+  height: 0.4375em;
+  margin-inline: 0.5em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* Allow preview image to overflow above, but contain timeline children */
+  overflow: visible;
+  position: relative;
+  z-index: 1;
+  /* GPU acceleration for smooth hover interactions */
+  transform: translateZ(0);
+}
+
+.timeline {
+  background-color: rgba(100, 100, 100, 0.5);
+  height: 0.1875em;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  /* Don't clip children - allow buffer bar to show */
+  overflow: visible !important;
+  /* Explicit height for children to inherit */
+  min-height: 0.1875em;
+}
+
+/* Buffer Bar - Progressive download indicator - OPTIMIZED: scaleX instead of width */
+.timeline .buffer-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 300ms ease-out;
+  z-index: 1;
+  max-width: 100%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Preview Position Bar - OPTIMIZED */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: calc(100% - var(--preview-position) * 100%);
+  background-color: rgba(150, 150, 150, 0.8);
+  display: none;
+}
+
+/* Progress Bar - OPTIMIZED: scaleX instead of width to avoid layout thrashing */
+.timeline .progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  transform-origin: left;
+  transform: scaleX(var(--progress-position, 0));
+  z-index: 2;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.timeline .progress-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  /* Counter-scale to keep gradient full-width despite parent scaleX */
+  width: 100%;
+  transform: scaleX(calc(1 / max(var(--progress-position, 0.001), 0.001)));
+  transform-origin: left;
+  background: linear-gradient(
+    to right,
+    #000000 0%,
+    #c80401 14%,
+    #f200b6 28%,
+    #ad4ff6 42%,
+    #10e7ff 56%,
+    #44fd54 70%,
+    #ffbf00 84%,
+    #ffffff 100%
+  );
+}
+
+/* Thumb Indicator - Gradient style */
+.timeline .thumb-indicator {
+  --scale: 0;
+  position: absolute;
+  transform: translateX(-50%) scale(var(--scale));
+  height: 200%;
+  top: -50%;
+  left: calc(var(--progress-position) * 100%);
+  background: linear-gradient(135deg, #0FF, #fff);
+  border-radius: 50%;
+  transition: transform 150ms ease-in-out;
+  aspect-ratio: 1 / 1;
+  z-index: 3;
+}
+
+/* Preview Image - OPTIMIZED: Proper positioning and simplified visibility */
+.timeline .preview-img {
+  position: absolute;
+  height: 4em;
+  aspect-ratio: 16 / 9;
+  top: -1em;
+  transform: translate(-50%, -100%);
+  border-radius: 0.25em;
+  border: 0.125em solid #0FF;
+  display: none;
+  pointer-events: none;
+  /* Clamp position to prevent overflow outside video container */
+  left: clamp(3em, calc(var(--preview-position) * 100%), calc(100% - 3em));
+}
+
+/* Thumbnail Image - HIDDEN: Not used, preview-img on timeline shows instead */
+.thumbnail-img {
+  display: none !important;
+}
+
+.video-container.scrubbing .preview-img,
+.timeline-container:hover .preview-img {
+  display: block;
+  z-index: 10;
+}
+
+.video-container.scrubbing .timeline::before,
+.timeline-container:hover .timeline::before {
+  display: block;
+  z-index: 1;
+}
+
+.video-container.scrubbing .thumb-indicator,
+.timeline-container:hover .thumb-indicator { --scale: 1; }
+
+.video-container.scrubbing .timeline,
+.timeline-container:hover .timeline { height: 100%; }
+
+/* Feature unavailable state */
+.feature-unavailable {
+  opacity: 0.3 !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+/* Keyboard focus - Cyan outline */
+.video-controls-container .controls button:focus-visible {
+  outline: 0.125em solid #0FF;
+  outline-offset: 0.125em;
+}
+ 
+button.mini-player-btn, button.full-screen-btn, button.theater-btn, button.captions-btn, button.play-pause-btn   {
+ max-width:var(--video-icon-size) !important;
+}
+button.speed-btn.wide-btn {
+  width:auto !important;
+  height:auto !important;
+  max-width:4ch !important;
+}
