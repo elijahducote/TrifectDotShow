@@ -299,7 +299,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
         }
         }
 
-        video.src = STREAM_CONFIG.mp4Fallback;
+        if (STREAM_CONFIG.mp4Fallback) video.src = STREAM_CONFIG.mp4Fallback;
         streamType = 'mp4';
       }
 
@@ -462,7 +462,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
           }
           streamPlayer = null;
         }
-        video.src = STREAM_CONFIG.mp4Fallback;
+        if (STREAM_CONFIG.mp4Fallback) video.src = STREAM_CONFIG.mp4Fallback;
         streamType = 'mp4';
       }
 

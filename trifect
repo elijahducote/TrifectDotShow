@@ -16,8 +16,8 @@ server {
 
   server_name watch.trifect.us;
 
-  ssl_certificate /etc/letsencrypt/live/join.trifect.us/fullchain.pem;
-  ssl_certificate_key /etc/letsencrypt/live/join.trifect.us/privkey.pem;
+  ssl_certificate /etc/letsencrypt/live/watch.trifect.us/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/watch.trifect.us/privkey.pem;
 
   ssl_protocols TLSv1.2 TLSv1.3;
 
@@ -146,18 +146,18 @@ server {
 
   # Route 1: /cdn/* -> nav/{name}/media/{path}
   location ~ ^/cdn/([^/]+)/(.*)$ {
-    alias /var/www/trifect.us/nav/$1/media/$2;
+    alias /var/www/trifect/nav/$1/media/$2;
   }
 
   # Route 2: /web/* -> nav/{path}
   location /web {
-    alias /var/www/trifect.us/nav;
+    alias /var/www/trifect/nav;
     try_files $uri $uri/ =404;
   }
 
   # Route 3: /src/* -> dploy/{path}
   location /src {
-    alias /var/www/trifect.us/dploy;
+    alias /var/www/trifect/dploy;
     try_files $uri $uri/ =404;
   }
 
@@ -172,9 +172,9 @@ server {
     proxy_redirect off;
   }
 
-  # Rewrite root to /watch
+  # Redirect root to /watch
   location = / {
-    rewrite ^ /watch last;
+    return 301 /watch;
   }
 
   # Main location block - serve all paths from nav/
