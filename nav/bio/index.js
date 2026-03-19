@@ -44,22 +44,14 @@ window.addEventListener("DOMContentLoaded", function () {
     var prev = current;
     current = index;
 
-    // Lift old card out of flow so new card determines container height
-    cards[prev].style.position = "absolute";
-    cards[prev].style.left = "0";
-    cards[prev].style.right = "0";
-
-    // Show new card in normal flow
     cards[current].classList.add("carousel-active");
 
     // Crossfade via Web Animations API
-    cards[prev].animate({opacity: [1, 0]}, {duration: 400, easing: "ease"});
+    var fadeOut = cards[prev].animate({opacity: [1, 0]}, {duration: 400, easing: "ease", fill: "forwards"});
     cards[current].animate({opacity: [0, 1]}, {duration: 400, easing: "ease"})
     .finished.then(function () {
+      fadeOut.cancel();
       cards[prev].classList.remove("carousel-active");
-      cards[prev].style.position = "";
-      cards[prev].style.left = "";
-      cards[prev].style.right = "";
       animating = false;
     });
 

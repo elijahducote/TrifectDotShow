@@ -1,13 +1,13 @@
 .bio-card {
-  max-width: 28em;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75em;
   position: relative;
   background: linear-gradient(145deg, #4c4c4c, #232323);
   background: linear-gradient(
     145deg in oklch,
-    oklch(0.35 0.005 var(--card-hue)) 0%,
-    oklch(0.20 0.005 var(--card-hue)) 100%
+    oklch(0.35 0.025 var(--card-hue)) 0%,
+    oklch(0.20 0.025 var(--card-hue)) 100%
   );
 }
 
@@ -20,7 +20,7 @@
   pointer-events: none;
   background: radial-gradient(
     ellipse at 30% 20%,
-    oklch(var(--card-L) 0.22 var(--card-hue) / 0.12) 0%,
+    oklch(var(--card-L) 0.22 var(--card-hue) / 0.22) 0%,
     transparent 70%
   );
 }
@@ -30,13 +30,13 @@
   box-sizing: border-box;
   width: 6em;
   height: 6em;
-  margin: 0 auto 1em;
+  margin: 0 auto 0.6em;
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(to bottom left, #333, #000);
   box-shadow:
     inset 0.2em -0.2em 0.6em rgba(0, 0, 0, 0.4),
-    0 0.15em 0.5em oklch(var(--card-L) 0.22 var(--card-hue) / 0.15);
+    0 0.15em 0.5em oklch(var(--card-L) 0.22 var(--card-hue) / 0.30);
 }
 
 .bio-avatar {
@@ -52,7 +52,7 @@
   border: none;
   padding: 0.0625em;
   box-shadow: none;
-  filter: drop-shadow(0 0.15em 0.5em oklch(var(--card-L) 0.22 var(--card-hue) / 0.15));
+  filter: drop-shadow(0 0.15em 0.5em oklch(var(--card-L) 0.22 var(--card-hue) / 0.30));
 }
 
 .bio-avatar-wrap[data-frame] .bio-avatar {
@@ -123,7 +123,7 @@
 .bio-aliases {
   font-stretch: condensed;
   opacity: 0.6;
-  margin-top: 0.75em;
+  margin-top: 0.4em;
   font-size: 0.9em;
   line-height: 1.5;
 }
@@ -132,7 +132,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5em;
-  margin-top: 0.75em;
+  margin-top: 0.4em;
   justify-content: center;
 }
 
@@ -151,23 +151,25 @@
   padding: 0.25em 0.75em;
   border: 0.0625em solid oklch(var(--card-L) 0.22 var(--card-hue) / 0.35);
   border-radius: 1.5em;
-  background: oklch(var(--card-L) 0.22 var(--card-hue) / 0.08);
+  background: oklch(var(--card-L) 0.22 var(--card-hue) / 0.15);
   font-size: 0.85em;
   letter-spacing: 0.03em;
   color: oklch(var(--card-L) 0.22 var(--card-hue));
 }
 
-.bio-card .divider { height: 0.5em; }
+.bio-card .divider { height: 0.25em; }
 
 .bio-card hr {
   border-top-color: oklch(var(--card-L) 0.22 var(--card-hue) / 0.4);
 }
 
 .bio-card > blockquote {
+  margin: 0.6em 0;
+  padding: 0.85em 1.1em;
   background: linear-gradient(
     197deg in oklch,
-    oklch(0.65 0.10 var(--card-hue) / 0.25) 0%,
-    oklch(0.45 0.08 var(--card-hue) / 0.75) 100%
+    oklch(0.65 0.15 var(--card-hue) / 0.25) 0%,
+    oklch(0.45 0.12 var(--card-hue) / 0.75) 100%
   ), rgba(0, 0, 0, 0.1);
 }
 
@@ -184,12 +186,32 @@
 }
 
 /* Progressive enhancement: JS adds carousel-init */
+#cast.carousel-init {
+  display: grid;
+  justify-items: center;
+}
+
 #cast.carousel-init .bio-card {
-  display: none;
+  grid-row: 1;
+  grid-column: 1;
+  visibility: hidden;
+  opacity: 0;
+  margin: 0;
+  align-self: start;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 #cast.carousel-init .bio-card.carousel-active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+  position: relative;
+}
+
+#cast.carousel-init .carousel-indicator {
+  grid-row: 2;
+  grid-column: 1;
 }
 
 @keyframes carousel-fadeIn {
@@ -208,8 +230,10 @@
 
 /* Prev / Next buttons */
 .carousel-btn {
-  position: absolute;
-  top: 2.5em;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: start;
+  margin-top: 0.75em;
   width: 2.5em;
   height: 2.5em;
   border-radius: 50%;
@@ -222,6 +246,7 @@
   align-items: center;
   justify-content: center;
   transition: background 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(4px);
   z-index: 2;
 }
 
@@ -231,11 +256,13 @@
 }
 
 .carousel-prev {
-  left: -3.25em;
+  justify-self: start;
+  margin-left: 0.5em;
 }
 
 .carousel-next {
-  right: -3.25em;
+  justify-self: end;
+  margin-right: 0.5em;
 }
 
 /* Indicator dots */
@@ -264,10 +291,10 @@
 /* Mobile: buttons inside card area */
 @media (max-width: 555px) {
   .carousel-prev {
-    left: 0.25em;
+    margin-left: 0.25em;
   }
   .carousel-next {
-    right: 0.25em;
+    margin-right: 0.25em;
   }
 }
 
