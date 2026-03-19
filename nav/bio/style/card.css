@@ -188,7 +188,7 @@
 /* Progressive enhancement: JS adds carousel-init */
 #cast.carousel-init {
   display: grid;
-  justify-items: center;
+  justify-items: stretch;
 }
 
 #cast.carousel-init .bio-card {
